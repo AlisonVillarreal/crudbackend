@@ -1,0 +1,35 @@
+<div class="center">
+    <a mat-button routerLink="/denominacion/add" class="add"><mat-icon>add</mat-icon>Registrar Rol</a>
+</div>
+<nav class="center">
+  <table mat-table [dataSource]="denominaciones" class="mat-elevation-z8">
+    <ng-container matColumnDef="IDTIPO_DENOMINACION">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let denominaciones"> {{denominaciones.IDTIPO_DENOMINACION}} </td>
+    </ng-container>
+    <ng-container matColumnDef="NOMBRE">
+      <th mat-header-cell *matHeaderCellDef>ROL</th>
+      <td mat-cell *matCellDef="let denominaciones"> {{denominaciones.NOMBRE}} </td>
+    </ng-container>
+    <ng-container matColumnDef="EDITAR">
+      <th mat-header-cell *matHeaderCellDef>Editar</th>
+      <td mat-cell *matCellDef="let denominaciones">
+        <a mat-icon-button [routerLink]="['/editar', denominaciones.IDTIPO_DENOMINACION]">
+          <mat-icon color="primary">edit</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="ELIMINAR">
+      <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let denominaciones">
+        <button (click)="delDenominaciones(denominaciones.IDTIPO_DENOMINACION)" mat-icon-button>
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="['IDTIPO_DENOMINACION', 'NOMBRE', 'EDITAR', 'ELIMINAR']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['IDTIPO_DENOMINACION', 'NOMBRE',
+      'EDITAR', 'ELIMINAR'];"></tr>
+  </table>
+</nav>
+
